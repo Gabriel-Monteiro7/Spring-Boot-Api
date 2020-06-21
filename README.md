@@ -21,7 +21,7 @@ Certifique-se de ter o Maven, java e o jdk instalados e adicionado ao PATH de se
   git clone git@github.com:Gabriel-Monteiro7/Spring-Api.git
 
 # Vá para o diretório principal
-  cd Spring-Api
+  cd Spring-Boot-Api
 ```
 ```
 # Inicie o servidor: mvn spring-boot:run 
