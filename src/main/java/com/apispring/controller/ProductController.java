@@ -62,10 +62,12 @@ public class ProductController {
     Optional<Product> product;
     try {
       product = productRepository.findById(id);
-      if (product.isEmpty()) {
-        return new ResponseEntity<Optional<Product>>(HttpStatus.NOT_FOUND);
+      if (product.isPresent()) {
+        return new ResponseEntity<Optional<Product>>(product, HttpStatus.OK);
+
       }
-      return new ResponseEntity<Optional<Product>>(product, HttpStatus.OK);
+      return new ResponseEntity<Optional<Product>>(HttpStatus.NOT_FOUND);
+
     } catch (EmptyResultDataAccessException e) {
       return new ResponseEntity<Optional<Product>>(HttpStatus.BAD_REQUEST);
     }
