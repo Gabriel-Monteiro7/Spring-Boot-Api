@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS Product;
+
+CREATE TABLE Product
+(
+  id INT
+  AUTO_INCREMENT  PRIMARY KEY,
+  name VARCHAR
+  (250) NOT NULL,
+  description VARCHAR
+  (250) NOT NULL,
+  value NUMERIC DEFAULT NULL,
+  image VARCHAR
+  (250) NOT NULL,
+);
