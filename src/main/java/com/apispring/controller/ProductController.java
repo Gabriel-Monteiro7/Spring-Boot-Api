@@ -132,11 +132,11 @@ public class ProductController {
 
   @Bean
   public BasicDataSource dataSource() throws URISyntaxException {
-    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+    // URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-    String username = dbUri.getUserInfo().split(":")[0];
-    String password = dbUri.getUserInfo().split(":")[1];
-    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath()
+    String username = "whnrbbvjmdgjgd";
+    String password = "c6e6d936b3401cabb16958f455e9888f2f04c94acd0c9ae4280d830331761104";
+    String dbUrl = "jdbc:postgresql://" + "ec2-54-161-208-31.compute-1.amazonaws.com:5432" + "/db4vgp2d0l3vfb"
         + "?sslmode=require";
 
     BasicDataSource basicDataSource = new BasicDataSource();

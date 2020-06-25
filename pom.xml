@@ -198,16 +198,16 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>
-										com.github.jsimone
+										com.github.gabriel
 									</groupId>
 									<artifactId>
-										webapp-runner
+										apispring
 									</artifactId>
 									<version>
 										8.0.30.2
 									</version>
 									<destFileName>
-										webapp-runner.jar
+										apispring.jar
 									</destFileName>
 								</artifactItem>
 							</artifactItems>
