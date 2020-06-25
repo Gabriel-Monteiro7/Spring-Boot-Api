@@ -22,6 +22,9 @@
 	<artifactId>
 		apispring
 	</artifactId>
+	<packaging>
+		war
+	</packaging>
 	<version>
 		0.0.1-SNAPSHOT
 	</version>
@@ -198,7 +201,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>
-										com.github.gabriel
+										com.github.jsimone
 									</groupId>
 									<artifactId>
 										apispring
