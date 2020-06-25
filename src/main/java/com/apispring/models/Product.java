@@ -20,11 +20,20 @@ public class Product implements Serializable {
   private long id;
   private String name;
   private String description;
+  private String category;
   private BigDecimal value;
   private String image;
 
   public String getName() {
     return name;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
   }
 
   public String getImage() {
