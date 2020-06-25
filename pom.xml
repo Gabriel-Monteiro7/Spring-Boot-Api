@@ -190,36 +190,6 @@
 				<artifactId>
 					spring-boot-maven-plugin
 				</artifactId>
-				<executions>
-					<execution>
-						<phase>
-							package
-						</phase>
-						<goals>
-							<goal>
-								copy
-							</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>
-										com.github.jsimone
-									</groupId>
-									<artifactId>
-										apispring
-									</artifactId>
-									<version>
-										8.0.30.2
-									</version>
-									<destFileName>
-										apispring.jar
-									</destFileName>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
