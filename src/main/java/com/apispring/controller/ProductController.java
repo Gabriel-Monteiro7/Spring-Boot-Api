@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -124,5 +128,22 @@ public class ProductController {
     }
     return new ResponseEntity<String>(name, HttpStatus.OK);
 
+  }
+
+  @Bean
+  public BasicDataSource dataSource() throws URISyntaxException {
+    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+    String username = dbUri.getUserInfo().split(":")[0];
+    String password = dbUri.getUserInfo().split(":")[1];
+    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath()
+        + "?sslmode=require";
+
+    BasicDataSource basicDataSource = new BasicDataSource();
+    basicDataSource.setUrl(dbUrl);
+    basicDataSource.setUsername(username);
+    basicDataSource.setPassword(password);
+
+    return basicDataSource;
   }
 }
