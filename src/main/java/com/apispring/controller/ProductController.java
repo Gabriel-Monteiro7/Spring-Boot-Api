@@ -3,6 +3,7 @@ package com.apispring.controller;
 import java.nio.file.Paths;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.nio.file.Path;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.swagger.annotations.Api;
@@ -120,12 +124,17 @@ public class ProductController {
       String type = file.getContentType().replace("image/", ".");
       name = result.toString() + type;
       byte[] bytes = file.getBytes();
-      String pathImage = System.getProperty("user.dir") + "/images/";
+      String pathImage = System.getProperty("user.dir") + "/src/main/resources/static/images/";
+      // ;
+      // name = "data:image/" + type + ";base64," +
+      // Base64.getEncoder().encodeToString(bytes);
+
       Path path = Paths.get(pathImage + name);
       Files.write(path, bytes);
     } catch (IOException e) {
       e.printStackTrace();
     }
+    name = "https://api-java-spring-boot.herokuapp.com/static/images/" + name;
     return new ResponseEntity<String>(name, HttpStatus.OK);
 
   }
@@ -145,5 +154,14 @@ public class ProductController {
     basicDataSource.setPassword(password);
 
     return basicDataSource;
+  }
+
+  @Configuration
+  public class StaticConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+      registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
   }
 }

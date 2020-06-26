@@ -22,14 +22,12 @@
 	<artifactId>
 		apispring
 	</artifactId>
-	<!--
 	<url>
-	http://maven.apache.org
+		http://maven.apache.org
 	</url>
 	<packaging>
-	war
+		war
 	</packaging>
-	-->
 	<version>
 		0.0.1-SNAPSHOT
 	</version>
