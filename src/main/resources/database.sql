@@ -8,7 +8,7 @@ CREATE TABLE Product
   description VARCHAR
   (250) NOT NULL,
   category VARCHAR
-  (250) NOT NULL,
-  value NUMERIC DEFAULT NULL,
-  image TEXT NOT NULL
+  (250) NOT NULL
 );
+  -- image TEXT NOT NULL ,
+  -- value NUMERIC DEFAULT NULL
